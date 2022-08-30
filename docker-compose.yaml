@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  app-postgres:
+    container_name: app-postgres
+    image: postgres:11.2-alpine
+    volumes:
+      - app-postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-0}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-0}
+      POSTGRES_DB: ${DB_DATABASE:-0}
+    ports:
+      - "${DB_PORT:-0}:5432"
+
+volumes:
+  app-postgres:
